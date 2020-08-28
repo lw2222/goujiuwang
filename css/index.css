@@ -1,0 +1,66 @@
+* {
+  list-style: none;
+}
+
+.nav_t {
+  background-color: #3E3A39;
+  height: 30px;
+}
+
+.nav_t a {
+  color: yellow;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.Search input {
+  height: 39px;
+}
+
+.Search span {
+  height: 39px;
+  background-color: red;
+}
+
+.Search button {
+  height: 39px;
+  background-color: red;
+}
+
+.Search button a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.lists {
+  position: relative;
+}
+
+.lists .list li {
+  margin: 0 10px;
+}
+
+.lists .poslist {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.lists .poslist button {
+  background: red;
+  color: #fff;
+}
+
+.lists .poslist button:hover {
+  opacity: 0.8;
+}
+
+.goods .good {
+  margin: 10px 14px;
+}
+
+.goods .good span {
+  color: red;
+  font-size: 14px;
+}

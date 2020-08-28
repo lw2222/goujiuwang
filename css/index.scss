@@ -1,0 +1,61 @@
+*{
+    list-style: none;
+}
+
+.nav_t{
+    background-color: #3E3A39;
+    height: 30px;
+    a{
+        color: yellow;
+        font-size: 12px;
+        text-decoration: none;
+    }
+}
+.Search{
+
+    input{
+        height: 39px;
+    }
+    span{
+        height: 39px;
+        background-color: red;
+    }
+    button{
+        height: 39px;
+        background-color: red;
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+.lists{
+    position: relative;
+    .list{
+        li{
+            margin: 0 10px;
+        }
+    }
+    .poslist{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        button{
+            background: red;
+            color: #fff;
+        }
+        button:hover{
+            opacity: 0.8;
+        }
+    }
+}
+.goods{
+    .good{
+        margin: 10px 14px;
+        span{
+            color: red;
+            font-size: 14px;
+        }
+    }
+}

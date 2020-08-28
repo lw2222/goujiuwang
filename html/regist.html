@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>欢迎注册</h1>
+        <div class="form-group" style="width: 400px;">
+            <label for="usr">用户名:</label>
+            <input type="text" class="form-control name" id="usr">
+        </div>
+        <div class="form-group" style="width: 400px;">
+            <label for="pwd">密码:</label>
+            <input type="password" class="form-control pass" id="pwd">
+        </div>
+        <button class="btn1">注册</button>
+    </div>
+    <script src="../js/jquery.js"></script>
+</body>
+<script>
+    $(".btn1").click(function () {
+        var $name = $(".name").val();
+        var $pass = $(".pass").val();
+        var reg = /^\w+$/i
+        if (reg.test($name) && reg.test($pass)) {
+            $.ajax({
+                type: "post",
+                url: "../../server/regist.php",
+                dataType: "json",
+                data: { email: $name, password: $pass },
+                success: function (res) {
+                    // console.log(res)
+                    if (res === 1) {
+                        alert("注册成功，即将前往登录页面")
+                        location.href = "./login.html"
+                    } else {
+                        alert("注册失败")
+                    }
+                }
+            })
+        }else{
+            alert("请输入正确的格式")
+        }
+
+    })
+</script>
+
+</html>

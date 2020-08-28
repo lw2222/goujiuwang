@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>欢迎登录</h1>
+    <div class="form-group" style="width: 400px;">
+      <label for="usr">用户名:</label>
+      <input type="text" class="form-control name" id="usr">
+    </div>
+    <div class="form-group" style="width: 400px;">
+      <label for="pwd">密码:</label>
+      <input type="password" class="form-control pass" id="pwd">
+    </div>
+    <button class="btn1">登录</button>
+  </div>
+  <script src="../js/jquery.js"></script>
+  <script>
+      $(".btn1").click(function(){
+        var $name=$(".name").val();
+        var $pass=$(".pass").val();
+        $.ajax({
+          type: "post",
+          url: "../../server/login.php",
+          dataType: "json",
+          data: {email: $name,password: $pass},
+          success: function(res){
+            // console.log(res)
+            $.each(res,function(name,val){
+              // console.log(val)
+              if(val === "success"){
+                location.href = "../index.html?name="+$name;
+              }else{
+                alert("登陆失败")
+              }
+            })
+          }
+        })
+      })
+  </script>
+</body>
+
+</html>

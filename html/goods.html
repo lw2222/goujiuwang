@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/goods.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row head">
+            <div class="col-1">
+                <input type="checkbox"><span>全选</span>
+            </div>
+            <div class="col-1 offset-1">商品信息</div>
+            <div class="col-1 offset-1">单价</div>
+            <div class="col-1 offset-1">数量</div>
+            <div class="col-1 offset-1">金额</div>
+            <div class="col-1 offset-1">操作</div>
+        </div>
+        <ul class="list-group list"></ul>
+        <div class="row foot">
+            <div class="col-1">
+                <input type="checkbox"><span>全选</span>
+            </div>
+            <div class="col-1 offset-6">
+                <p>已选商品<span></span>件</p>
+            </div>
+            <div class="col-1 offset-1">
+                <p>合计：<span></span></p>
+            </div>
+            <div class="col-1">
+                <button>结算</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/jquery.js"></script>
+<script src="../js/goods.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script>
+    var url = location.search;
+    var id = parseInt(url.substring(4));
+    var cookie=$.cookie("id"+id,id,{
+        expirse:1,
+        path: "/",
+    })
+    var arr =[];
+    arr.push($.cookie());
+    var arr1=[]
+    $.each(...arr,function(name,val){
+        arr1.push(val);
+    })
+    $.ajax({
+        type: "get",
+        url: "../data.json",
+        dataType: "json",
+        success: function(res){
+            // console.log(res.data)
+            var str="";
+            for(var i = 0;i<res.data.length;i++){
+                console.log(res.data[i])
+                for(var a = 0;a<arr1.length;a++){
+                    if(i === parseInt(arr1[a])){
+                        console.log(i)
+                        str +=`<li class="row" style="margin: 10px 0">
+                            <div class="col-1"><img src="${res.data[i].图片}"></div> 你还有一年
+                            <div class="col-1 offset-2">${res.data[i].标题}</div>
+                            <div class="col-1 ">${res.data[i].itempri}</div>
+                            
+                        </li>`
+                    }
+                }
+            }
+            // console.log(str)
+            $(".list").html(str)
+        }
+    })
+</script>
+
+</html>
